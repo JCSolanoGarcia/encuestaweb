@@ -1,0 +1,1338 @@
+<body>
+    <header style="margin-bottom: 10px;">
+        <div class="imagen">
+            <img src="../../../assets/img/logoPorkcolombia.png" alt="test">
+        </div>
+        <small>Empleo en el sector porcícola primer semestre - 2022</small>   
+        <p>Señor porcicultor y membro de la cadena porcícola, la información que solicita Porkcolombia-FNP en el formulario será tratada confidencialmente, de forma agregada y tendrá un fin netamente estadístico.</p>
+        
+    </header>
+    
+    <fieldset class="fieldcontent" id="field1">
+        <legend class="fieldcontentTitle">1. Identificación</legend>
+        <div class="items">
+            <label>1.1. Razon Social de la empresa</label>
+            <input type="text"  [(ngModel)]="razon_social">
+        </div>
+        <div class="items">
+            <label>1.2. Nombre comercial</label>
+            <input type="text" [(ngModel)]="nombre_comercial">
+        </div>
+        <div class="items">
+            <label>1.3 Domicilio principal o dirección de la gerencia</label>
+            <input type="text" [(ngModel)]="direccion">
+        </div>        
+        <div class="col3">
+            <div class="row2">
+                <label>1.4. Municipio</label>
+                <input type="text" [(ngModel)]="municipio">
+            </div>
+            <div class="row2">
+                <label>1.5. Departamento</label>
+                <input type="text" [(ngModel)]="departamento">                
+            </div> 
+            <div class="row2">
+                <label>1.6. Teléfono</label>
+                <input type="number" pattern="0-9" [(ngModel)]="telefono">
+            </div>
+            <div class="row2">
+                <label>1.7. Email</label>
+                <input type="email" [(ngModel)]="email">                
+            </div> 
+            <div class="row2">
+                <label>1.8. Página WEB</label>
+                <input type="text" [(ngModel)]="pagina_web"> 
+            </div>           
+        </div>
+        <div class="politica">
+            <input class="check" type="checkbox" [(ngModel)]="acepto">
+            <a class="link" href="https://www.porkcolombia.co/politicas-de-tratamiento-de-dato-personal-y-manejos-de-bases-de-datos/"><small>Acepto la política de privacidad y proteccion de datos personales de Porkcolombia F.N.P. </small></a>
+        </div>
+    </fieldset>
+    <!-- <button *ngIf="verbtn1" class="btn btn-primary" type="button" (click)="continuar1()" id="btn1">Continuar 1</button>  -->   
+    
+    <fieldset class="fieldcontent" *ngIf="verField2" id="field2">
+        <legend class="fieldcontentTitle">2. Eslabón productivo</legend>
+        <label style="text-align: justify;">Señale el (los) eslabon (es) productivo (s), en el (los) cual (es) desarrolló actividades en el primer semestre del 2022</label>
+        <div>
+            <h3 class="acordion" (click) = "aba();">2.1 Producción de alimento balanceado</h3>
+            <div class="panel" id="panel1">
+                <div class="options1">
+                    <label>2.1.1 Producción de alimento balanceado</label>
+                    <input type="checkbox" [(ngModel)]="aba_2_1_1">
+                </div>                
+            </div>
+        </div>
+        <div>
+            <h3 class="acordion" (click) = "primaria();">2.2 Producción primaria (Granja)</h3>
+            <div class="panel" id="panel2">
+                <div class="options">
+                    <label>2.1.1 Cria</label>
+                    <input type="checkbox" [(ngModel)]="cria_2_1_1">
+                </div>
+                <div class="options">
+                    <label>2.1.2 Levante-Ceba</label>
+                    <input type="checkbox" [(ngModel)]="levante_2_1_2">
+                </div>
+                <div class="options">
+                    <label>2.1.3 Genética</label>
+                    <input type="checkbox" [(ngModel)]="genetica_2_1_2">
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3 class="acordion" (click) = "transformacion();">2.3 Transformación (con infraestructura propia para el desarrollo de la actividad)</h3>
+            <div class="panel" id="panel3">
+                <div class="options">
+                    <label>2.2.1 Sacrificio</label>
+                    <input type="checkbox" [(ngModel)]="sacrificio_2_2_1">
+                </div>
+                <div class="options">
+                    <label>2.2.2 Desposte</label>
+                    <input type="checkbox" [(ngModel)]="desposte_2_2_2">
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3 class="acordion" (click) = "mercadeo();">2.4 Mercadeo de carne (con infraestructura propia para el desarrollo de la actividad)</h3>
+            <div class="panel" id="panel4">
+                <div class="options">
+                    <label>2.3.1 Punto de venta</label>
+                    <input type="checkbox" [(ngModel)]="puntoVenta_2_3_1">
+                </div>
+                <div class="options">
+                    <label>2.3.2 Grupo de ventas (especializado)</label>
+                    <input type="checkbox" [(ngModel)]="grupoVenta_2_3_2">
+                </div>                
+            </div>
+        </div>
+    </fieldset>
+    <button *ngIf="verbtn2" class="btn btn-primary" type="button" (click)="continuar2()" id="btn2">Continuar 2</button>
+    
+    <fieldset class="fieldcontent" *ngIf="verField3" id="field3">
+        <legend class="fieldcontentTitle">3. Información general del empleo en el primer semestre del 2022</legend>
+        <!-- <label style="text-align: justify;">Cantidad de personas de dirección y coordinación general de la empresa ocupado según genero en el primer semestre del 2022</label> -->
+        <div class="grid">
+            <div class="rowDes">
+                <label style="font-weight: bold;">Descripción</label>
+            </div>
+            <div class="rowTotal">
+                <label style="font-weight: bold; text-align: center;">Total</label>
+            </div>
+            <div class="rowHom">
+                <label style="font-weight: bold; text-align: center;">Hombre</label>
+            </div>
+            <div class="rowMuj">
+                <label style="font-weight: bold; text-align: center;">Mujer</label>
+            </div>         
+        </div>
+        <hr>  
+        <div class="grid">
+            <div class="rowDes">
+                <label>3.1. Indique la cantidad de personas ocupadas por la empresa en el primer semestre de 2022</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_1">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_1_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_1_mujer">
+            </div>   
+        </div> 
+        <hr>
+        <div class="grid">
+            <div class="rowDes">
+                <label>3.2. Del personal ocupado ¿cuántos son sin remuneración? (propietarios, socios, familiares, etc)</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_2">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_2_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_2_mujer">
+            </div>   
+        </div>
+        <hr>
+        <div class="grid">
+            <div class="rowDes">
+                <label>3.3. Del personal ocupado ¿cuántos son fijos o permanentes?</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_3">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_3_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_3_mujer">
+            </div>   
+        </div>
+        <hr> 
+        <div class="grid">
+            <div class="rowDes">
+                <label>3.4. Del personal ocupado ¿cuántos son eventuales?</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_4">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_4_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_3_4_mujer">
+            </div>   
+        </div>     
+    </fieldset>
+    <button *ngIf="verbtn3" class="btn btn-primary" type="button" (click)="continuar3()" id="btn3">Continuar 3</button>
+
+    <fieldset class="fieldcontent" *ngIf="verSeccion4">
+        <legend class="fieldcontentTitle">4. Empleo en la producción de alimento balanceado</legend>
+        <label style="text-align: justify;">Indique la cantidad de personas que ocupó la empresa en el primer semestre del 2022</label>
+        <div class="grid">
+            <div class="rowDes">
+                <label style="font-weight: bold;" >4.1. Personal fijo (Jornada completa o parcial)</label>
+            </div>
+            <div class="rowTotal">
+                <label style="font-weight: bold; text-align: center;">Total</label>
+            </div>
+            <div class="rowHom">
+                <label style="font-weight: bold; text-align: center;">Hombre</label>
+            </div>
+            <div class="rowMuj">
+                <label style="font-weight: bold; text-align: center;">Mujer</label>
+            </div>         
+        </div> 
+        <!-- <div class="grid">
+            <div class="rowDes">
+                <label style="font-weight: bold;" >4.1. Personal fijo (Jornada completa o parcial)</label>
+            </div>
+        </div> -->  
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.1.1 Director o jefe de planta</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_1">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_1_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_1_mujer">
+            </div>   
+        </div> 
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.1.2 Jefe de proceso</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_2">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_2_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_2_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.1.3 Operarios y auxiliares</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_3">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_3_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_3_mujer">
+            </div>   
+        </div> 
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.1.4 Personal administrativo</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_4">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_4_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_4_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.1.5 Personal de comercialización y ventas</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_5">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_5_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_5_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.1.6 Conductores y auxiliares de transporte</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_6">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_6_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_6_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.1.7 Operarios o auxiliares de logística</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_7">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_7_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_7_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.1.8 Personal de labores logísticas</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_8">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_8_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_8_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.1.9 Personal en la producción agrícola</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_9">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_9_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_9_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.1.10 Otros</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_10">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_10_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_1_10_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label style="font-weight: bold;" >4.2. Personal eventual (Actividades de apoyo, pasantes, aprendices)</label>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>4.2.1 Actividades de apoyo, pasantes, aprendices</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_2_1">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_2_1_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_2_1_mujer">
+            </div>   
+        </div>        
+        <div class="gridInventario">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label style="font-weight: bold;">4.3 Inventario</label>
+            </div>
+            <div class="rowMuj">
+                <label style="font-weight: bold; text-align: center;">Kilos</label>
+            </div>         
+        </div>
+        <div class="gridInventario">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>4.3.1 ¿Cuantos kilos de alimento para porcinos produjó en el primer semestre del 2022?</label>
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_4_3_1">
+            </div>   
+        </div>     
+    </fieldset>
+    <button *ngIf="verbtn4" class="btn btn-primary" type="button" (click)="continuar3()" id="btn4">Continuar 4</button>
+
+    <fieldset class="fieldcontent" *ngIf="verSeccion5">
+        <legend class="fieldcontentTitle">5. Empleo en la producción primaria</legend>
+        <label style="text-align: justify;">Indique la cantidad de personas que ocupó la granja en el primer semestre del 2022</label>
+        <div class="grid">
+            <div class="rowDes">
+                <label style="font-weight: bold;">5.1 Personal fijo (jornada completa o parcial)</label>
+            </div>
+            <div class="rowTotal">
+                <label style="font-weight: bold; text-align: center;">Total</label>
+            </div>
+            <div class="rowHom">
+                <label style="font-weight: bold; text-align: center;">Hombre</label>
+            </div>
+            <div class="rowMuj">
+                <label style="font-weight: bold; text-align: center;">Mujer</label>
+            </div>         
+        </div>  
+        <div class="grid">
+            <div class="rowDes">
+                <label>5.1.1 Director o coordinador de granja</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_1">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_1_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_1_mujer">
+            </div>   
+        </div> 
+        <div class="grid">
+            <div class="rowDes">
+                <label>5.1.2 Líderes de área</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_2">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_2_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_2_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>5.1.3 Jefes de sitio</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_3">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_3_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_3_mujer">
+            </div>   
+        </div> 
+        <div class="grid">
+            <div class="rowDes">
+                <label>5.1.4 Técnicos de granja</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_4">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_4_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_4_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>5.1.5 Operarios y auxiliares</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_5">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_5_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_5_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>5.1.6 Conductores y auxiliares de transporte</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_6">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_6_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_6_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>5.1.7 Personal de administrativo</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_7">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_7_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_7_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>5.1.8 Personal de comercialización y ventas</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_8">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_8_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_8_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>5.1.9 Otros</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_9">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_9_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_1_9_mujer">
+            </div>    
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label style="font-weight: bold;" >5.2. Personal eventual (Actividades de apoyo, pasantes, aprendices)</label>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>5.2.1 Actividades de apoyo, pasantes, aprendices</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_2_1">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_2_1_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_2_1_mujer">
+            </div>   
+        </div>
+        <div class="gridInventario">
+            <div style="grid-column: 1 / span 5; grid-row: 1 ;">
+                <label style="font-weight: bold;">5.3 Inventario en granja. Indique cuántos porcinos en promedio hubo en el primer semestre de 2022</label>
+            </div>
+            <div class="rowMuj">
+                <label style="font-weight: bold; text-align: center;">Cantidad</label>
+            </div>         
+        </div>
+        <div class="gridInventario">
+            <div class="rowDes">
+                <label>5.3.1 Gordos</label>
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_3_1">
+            </div>   
+        </div> 
+        <div class="gridInventario">
+            <div class="rowDes">
+                <label>5.3.2 Hembras</label>
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_3_2">
+            </div>   
+        </div>   
+        <div class="gridInventario">
+            <div class="rowDes">
+                <label>5.3.3 Machos reproductores</label>
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_5_3_3">
+            </div>   
+        </div>  
+    </fieldset>
+    <button *ngIf="verbtn4" class="btn btn-primary" type="button" (click)="continuar3()" id="btn4">Continuar 4</button>
+
+    <fieldset class="fieldcontent" *ngIf="verSeccion6">
+        <legend class="fieldcontentTitle">6. Empleo en la transformación</legend>
+        <label style="text-align: justify;">Indique la cantidad de personas que fueron ocupadas en la planta en el primer semestre del 2022</label>
+        <div class="grid">
+            <div class="rowDes">
+                <label style="font-weight: bold;">6.1 Personal fijo (jornada completa o parcial)</label>
+            </div>
+            <div class="rowTotal">
+                <label style="font-weight: bold; text-align: center;">Total</label>
+            </div>
+            <div class="rowHom">
+                <label style="font-weight: bold; text-align: center;">Hombre</label>
+            </div>
+            <div class="rowMuj">
+                <label style="font-weight: bold; text-align: center;">Mujer</label>
+            </div>         
+        </div>  
+        <div class="grid">
+            <div class="rowDes">
+                <label>6.1.1 Director o jefe de planta</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_1">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_1_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_1_mujer">
+            </div>   
+        </div> 
+        <div class="grid">
+            <div class="rowDes">
+                <label>6.1.2 Jefe de área</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_2">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_2_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_2_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>6.1.3 Operarios y auxiliares</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_3">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_3_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_3_mujer">
+            </div>   
+        </div> 
+        <div class="grid">
+            <div class="rowDes">
+                <label>6.1.4 Personal administrativo</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_4">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_4_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_4_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>6.1.5 Conductores y auxiliares de transporte</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_5">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_5_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_5_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>6.1.6 Apoyo administrativo</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_6">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_6_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_6_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>6.1.7 Otros</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_7">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_7_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_1_7_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label style="font-weight: bold;" >6.2. Personal eventual (Actividades de apoyo, pasantes, aprendices)</label>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>6.2.1 Actividades de apoyo, pasantes, aprendices</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_2_1">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_2_1_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_2_1_mujer">
+            </div>   
+        </div>
+        <div class="gridInventario">
+            <div style="grid-column: 1 / span 5; grid-row: 1 ;">
+                <label style="font-weight: bold;">6.3 Información de beneficio y desposte en el primer semestre de 2022</label>
+            </div>
+            <div class="rowMuj">
+                <label style="font-weight: bold; text-align: center;">Cabezas / kilos</label>
+            </div>         
+        </div>
+        <div class="gridInventario">
+            <div class="rowDes">
+                <label>6.3.1 Beneficio. Indique cuántas cabezas se sacrificarón en su planta en el primer semestre del 2022</label>
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_3_1">
+            </div>   
+        </div> 
+        <div class="gridInventario">
+            <div class="rowDes">
+                <label>6.3.2 Desposte. Indique cuántos kilos fueron procesados en su planta en el primer semestre del 2022</label>
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_6_3_2">
+            </div>   
+        </div>        
+    </fieldset>
+    <button *ngIf="verbtn5" class="btn btn-primary" type="button" (click)="continuar4()" id="btn4">Continuar 5</button>
+
+    <fieldset class="fieldcontent" *ngIf="verSeccion7">
+        <legend class="fieldcontentTitle">7. Empleo en la comercialización</legend>
+        <label style="text-align: justify;">Indique la cantidad de personas que ocupó la empresa en el primer semestre del 2022</label>
+        <div class="grid">
+            <div class="rowDes">
+                <label style="font-weight: bold;">7.1 Personal fijo (jornada completa o parcial)</label>
+            </div>
+            <div class="rowTotal">
+                <label style="font-weight: bold; text-align: center;">Total</label>
+            </div>
+            <div class="rowHom">
+                <label style="font-weight: bold; text-align: center;">Hombre</label>
+            </div>
+            <div class="rowMuj">
+                <label style="font-weight: bold; text-align: center;">Mujer</label>
+            </div>         
+        </div>  
+        <div class="grid">
+            <div class="rowDes">
+                <label>7.1.1 Director de comercialización y ventas</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_1">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_1_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_1_mujer">
+            </div>   
+        </div> 
+        <div class="grid">
+            <div class="rowDes">
+                <label>7.1.2 Jefe o coordinador de ventas</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_2">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_2_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_2_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>7.1.3 Personal puntos de venta</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_3">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_3_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_3_mujer">
+            </div>   
+        </div> 
+        <div class="grid">
+            <div class="rowDes">
+                <label>7.1.4 Personal de ventas a otros canales de comercialización</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_4">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_4_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_4_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>7.1.5 Jefe o coordinador de logística</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_5">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_5_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_5_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>7.1.6 Operarios o auxiliares de logística</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_6">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_6_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_6_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>7.1.7 Conductores y auxiliares de transporte</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_7">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_7_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_7_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>7.1.8 Apoyo administrativo</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_8">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_8_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_8_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>7.1.9 Otros</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_9">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_9_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_1_9_mujer">
+            </div>   
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label style="font-weight: bold;" >7.2. Personal eventual (Actividades de apoyo, pasantes, aprendices)</label>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="rowDes">
+                <label>7.2.1 Actividades de apoyo, pasantes, aprendices</label>
+            </div>
+            <div class="rowTotal">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_2_1">
+            </div>
+            <div class="rowHom">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_2_1_hombre">
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_2_1_mujer">
+            </div>   
+        </div>
+        <div class="gridInventario">
+            <div style="grid-column: 1 / span 5; grid-row: 1 ;">
+                <label style="font-weight: bold;">7.3 Comercio de carne</label>
+            </div>
+            <div class="rowMuj">
+                <label style="font-weight: bold; text-align: center;">Kilos</label>
+            </div>         
+        </div>
+        <div class="gridInventario">
+            <div style="grid-column: 1 / span 5; grid-row: 1 ;">
+                <label>7.3.1 Indique cuántos kilos de carne y subproductos de cerdo, fueron comercializados en el primer semestre del 2022</label>
+            </div>
+            <div class="rowMuj">
+                <input type="number" pattern="0-9" [(ngModel)]="total_7_3_1">
+            </div>   
+        </div>         
+    </fieldset>
+    <button *ngIf="verbtn5" class="btn btn-primary" type="button" (click)="continuar4()" id="btn4">Continuar 5</button>
+
+    <fieldset class="fieldcontent" *ngIf="verSeccion6">
+        <legend class="fieldcontentTitle">8. Nivel salarial promedio mensual.</legend>
+        <label style="text-align: justify;">Nivel salarial promedio mensual del personal fijo. Primer semestre del 2022. (Señale un código de 1 a 7 según sea la tabla *)</label>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label style="font-weight: bold;">8.1 Personal de plantas de producción de alimentos balanceados para cerdos</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <label style="font-weight: bold; text-align: center;">Escala</label>
+            </div>         
+        </div>  
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.1.1 Director o jefe de planta</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_1_1" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.1.2 Jefe de proceso</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_1_2" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.1.3 Operarios y auxiliares</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_1_3" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.1.4 Personal administrativo</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_1_4" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.1.5 Personal de comercialización y ventas</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_1_5" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.1.6 Conductores y auxiliares de transporte</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_1_6" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.1.7 Operarios o auxiliares de logística</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_1_7" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>       
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.1.8 Personal de labores logísticas</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_1_8" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.1.9 Personal en la producción agrícola</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_1_9" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>            
+                </select>
+            </div>   
+        </div> 
+
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label style="font-weight: bold;">8.2 Personal de granja</label>
+            </div>         
+        </div>  
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.2.1 Director o coordinador de granja</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_2_1" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>       
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.2.2 Líderes de área</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_2_2" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.2.3 Jefes de sitio</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_2_3" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>       
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.2.4 Técnicos de granja</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_2_4" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.2.5 Operarios y auxiliares</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_2_5" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>    
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.2.6 Conductores y auxiliares de transporte</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_2_6" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.2.7 Personal administrativo</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_2_7" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>      
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.2.8 Personal de comercialización y ventas</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_2_8" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>       
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.2.9 Otros</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_2_9" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>            
+                </select>
+            </div>   
+        </div> 
+        
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label style="font-weight: bold;">8.3 Personal de planta de beneficio o desposte</label>
+            </div>         
+        </div>  
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.3.1 Director o jefe de planta</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_3_1" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>       
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.3.2 Jefe de área</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_3_2" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.3.3 Operarios y auxiliares</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_3_3" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>       
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.3.4 Personal administrativo</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_3_4" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.3.5 Conductores y auxiliares de transporte</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_3_5" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.3.6 Apoyo administrativo</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_3_6" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>      
+                </select>
+            </div>   
+        </div>
+
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label style="font-weight: bold;">8.4 Personal comercial y de puntos de venta</label>
+            </div>         
+        </div>  
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.4.1 Director de comercialización y ventas</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_4_1" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>       
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.4.2 Jefe o coordinador de ventas</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_4_2" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.4.3 Personal puntos de venta</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_4_3" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>       
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.4.4 Personal de ventas a otros canales de comercialización</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_4_4" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.4.5 Jefe o coordinador de logística</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_4_5" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>        
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.4.6 Operarios o auxiliares de logística</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_4_6" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>      
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.4.7 Conductores y auxiliares de transporte</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_4_7" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>      
+                </select>
+            </div>   
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1 / span 4; grid-row: 1 ;">
+                <label>8.4.8 Apoyo administrativo</label>
+            </div>
+            <div style="grid-column: 5 / span 6; grid-row: 1 ;">
+                <select style="width: 100%;" [(ngModel)]="nivel_8_4_8" 
+                        placeholder="Seleccione...">
+                    <option *ngFor="let nivel of listaEscala" value={{nivel.nivel}}>{{nivel.nivel}}</option>      
+                </select>
+            </div>   
+        </div>
+        
+    </fieldset>
+    <button *ngIf="verbtn5" class="btn btn-primary" type="button" (click)="continuar4()" id="btn4">Continuar 5</button>
+
+    <fieldset class="fieldcontent" id="field9">
+        <legend class="fieldcontentTitle">9. Responsable de la empresa que suministra la información</legend>       
+        <div class="col3">
+            <div class="row2">
+                <label>9.1 Nombre</label>
+                <input type="text" [(ngModel)]="nombre_9_1">
+            </div>
+            <div class="row2">
+                <label>9.2 Cargo</label>
+                <input type="text" [(ngModel)]="cargo_9_2">                
+            </div> 
+            <div class="row2">
+                <label>9.3 Celular</label>
+                <input type="number" pattern="0-9" [(ngModel)]="celular_9_3">
+            </div>
+            <div class="row2">
+                <label>9.4 Email</label>
+                <input type="email" [(ngModel)]="email_9_4">                
+            </div>            
+        </div>
+    </fieldset>
+    <button *ngIf="acepto" class="btn btn-primary" type="button" (click)="verificarData()">Enviar</button>
+</body>

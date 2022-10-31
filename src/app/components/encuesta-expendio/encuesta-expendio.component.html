@@ -1,0 +1,130 @@
+<body>
+    <header style="margin-bottom: 10px;">
+        <div class="imagen">
+            <img src="../../../assets/img/logoPorkcolombia.png" alt="test">
+        </div>
+        <small>Medición de empleo del sector porcícola - 2022</small>   
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, aliquid eius facilis minus numquam rerum temporibus quo cumque dicta animi distinctio ea sed dolorem consequuntur at sit repudiandae tenetur perferendis!</p>
+        
+    </header>
+    
+    <fieldset class="fieldcontent">
+        <legend class="fieldcontentTitle">Encuestador</legend>
+        <label>1. Seleccione un encuestador</label>
+        <select (change)="filtrar()" 
+                [(ngModel)]="encuestador" 
+                placeholder="Seleccione un encuestador">
+            <option *ngFor="let encuestador of listaEncuestador" value={{encuestador}}>{{encuestador}}</option>
+            
+        </select>
+    </fieldset>
+    
+    <fieldset class="fieldcontent" *ngIf="encuestador">
+        <legend class="fieldcontentTitle">Expendio</legend>
+        <label>2. Seleccione un expendio</label>
+        <select (change)="filtrarExpendios()" 
+                [(ngModel)]="expendio" 
+                >
+            <option *ngFor="let expendio of listaExpendios" value={{expendio.expendio}}>{{expendio.expendio}}</option>        
+        </select>
+        <div *ngIf="expendio" class="col2">
+            <div class="row2">
+                <label>3. Departamento</label>
+                <input type="text" value="{{departamento}}" disabled>
+            </div>
+            <div class="row2">
+                <label>4. Ciudad</label>
+                <input type="text" value="{{ciudad}}" disabled>                
+            </div>
+            
+        </div>
+        <div *ngIf="expendio" class="col2">
+            <div class="row2">
+                <label>5. NIT</label>
+                <input type="text" value="{{nit}}" disabled> 
+            </div>
+            <div class="row2">
+                <label>6. Dirección</label>
+                <input type="text" value="{{direccion}}" disabled>
+            </div>           
+        </div>
+    </fieldset>
+    
+    <fieldset class="fieldcontent" *ngIf="expendio">
+        <legend class="fieldcontentTitle">Datos del encuestado</legend>
+        <div class="row1">
+            <label>7. Nombre</label>
+            <input type="text" [(ngModel)]="nombre_encuestado" placeholder="Nombre del encuestado">
+            <label>8. Teléfono</label>
+            <input type="number" [(ngModel)]="telefono_encuestado" minlength="7" maxlength="10" placeholder="Teléfono del encuestado">
+        </div>
+        <div class="politica">
+            <input class="check" type="checkbox" id ="acepto" [(ngModel)]="acepto">
+            <a class="link" href="https://www.porkcolombia.co/politicas-de-tratamiento-de-dato-personal-y-manejos-de-bases-de-datos/"><small>Acepto la política de privacidad y proteccion de datos personales de Porkcolombia F.N.P. </small></a>
+        </div>        
+    </fieldset>
+
+    <fieldset class="fieldcontent" *ngIf="acepto">
+        <legend class="fieldcontentTitle">Comercialización</legend>
+        <label class="pregunta">9. ¿Cuántos kilos de carne de cerdo comercializó en la última semana?</label>
+        <input type="number" pattern="0-9" [(ngModel)]="total_kilos" placeholder="Número total de kilos">
+        <div class="col2">
+            <div class="row3">
+                <label>10. ¿Cuántos kilos en canal?</label>
+                <input type="number" pattern="0-9" [(ngModel)]="kilos_canal" placeholder="Número de kilos en canal">
+            </div>
+            <div class="row3">
+                <label>11. ¿Cuántos kilos en astilla?</label>
+                <input type="number" pattern="0-9" [(ngModel)]="kilos_astilla" placeholder="Número de kilos en astilla">
+            </div>
+            <div class="row3">
+                <label>12. ¿Cuántos kilos en carne despostada?</label>
+                <input type="number" pattern="0-9" [(ngModel)]="kilos_despostado" placeholder="Número de kilos despostado">
+            </div>            
+        </div>        
+        <label class="pregunta">13. ¿Qué porcentaje calcula usted que representa las ventas de productos de carne de cerdo, respecto a las ventas totales del establecimiento en la última semana?</label>
+        <input type="number" pattern="0-9" [(ngModel)]="porcentaje" placeholder="Porcentaje de venta">
+    </fieldset>
+
+    <fieldset class="fieldcontent" *ngIf="acepto">
+        <legend class="fieldcontentTitle">Personal ocupado en el establecimiento</legend>
+        <label class="pregunta">14. ¿Cuál es el total de personas ocupadas en la última semana por el establecimiento?</label>
+        <input type="number" pattern="0-9" [(ngModel)]="total_empleos" placeholder="Total de personas ocupadas">
+        <div class="col2">
+            <div class="row4">
+                <label>15. ¿Cuántos hombres?</label>
+                <input type="number" pattern="0-9" [(ngModel)]="total_empleo_hombre" placeholder="Total de hombres">
+            </div>
+            <div class="row4">
+                <label>16. ¿Cuántas mujeres?</label>
+                <input type="number" pattern="0-9" [(ngModel)]="total_empleo_mujer" placeholder="Total de mujeres">
+            </div>
+        </div>    
+        <label class="pregunta">17. ¿Cuántas personas fueron ocupadas en la última semana en labores administrativas?</label>
+        <input type="number" pattern="0-9" [(ngModel)]="total_admin" placeholder="Número personal administrativo">
+        <div class="col2">
+            <div class="row4">
+                <label>18. ¿Cuántos hombres?</label>
+                <input type="number" pattern="0-9" [(ngModel)]="total_admin_hombre" placeholder="Número de hombres administrativos">
+            </div>
+            <div class="row4">
+                <label>19. ¿Cuántos mujeres?</label>
+                <input type="number" pattern="0-9" [(ngModel)]="total_admin_mujer" placeholder="Número de mujeres administrativas">
+            </div>
+        </div>        
+        <label class="pregunta">20. ¿Cuántas personas fueron ocupadas en la última semana en labores operativas?</label>
+        <input type="number" pattern="0-9" [(ngModel)]="total_operativo" placeholder="Número personal operativo">
+        <div class="col2">
+            <div class="row4">
+                <label>21. ¿Cuántos hombres?</label>
+                <input type="number" pattern="0-9" [(ngModel)]="total_operativo_hombre" placeholder="Número de hombres operativos">
+            </div>
+            <div class="row4">
+                <label>22. ¿Cuántos mujeres?</label>
+                <input type="number" pattern="0-9" [(ngModel)]="total_operativo_mujer" placeholder="Número de mujeres operativas">        
+            </div>
+        </div>       
+    </fieldset>
+
+    <button *ngIf="acepto" class="btn btn-primary" type="button" (click)="verificarData()">Enviar</button>
+</body>
